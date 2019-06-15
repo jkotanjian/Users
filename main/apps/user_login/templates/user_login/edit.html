@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name=charset content="utf-8"> 
+    <title>Edit User</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<style>
+	#wrapper {
+		background-color: #add8e638;
+		margin: 0px auto;
+		width: 800px;
+	}	
+	.container {
+		text-align: center;
+		padding: 25px;		
+	}
+	a.btn.btn-info {
+		width: 125px;
+    	display: block;
+    	margin-top: 10px;
+	}
+	button.btn.btn-dark {
+		width: 125px;
+    	display: block;
+    	margin-top: 10px;
+	}
+	a.btn.btn-secondary {
+		width: 125px;
+    	display: block;
+    	margin-top: 10px;
+	}
+</style>
+</head>
+<body>
+	<div id="wrapper">
+		<div class="container">
+			<h2>Edit User {{ user_id.id }}</h2>
+			<hr class="my-4">
+			<form action="/{{ user_id.id }}/update/" method="post">
+			{% csrf_token %}
+				<div class="form-group row">
+					<label for="first_name" class="col-sm-2 col-form-label">First Name:</label>
+					<div class="form-group-row">
+						<input type="text" class="form-control" placeholder="{{ user_id.first_name }}" name="first_name">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="last_name" class="col-sm-2 col-form-label">Last Name:</label>
+					<div class="form-group-row">
+						<input type="text" class="form-control" placeholder="{{ user_id.last_name }}" name="last_name">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="email" class="col-sm-2 col-form-label">Email:</label>
+					<div class="form-group-row">
+						<input type="text" class="form-control" name="email" placeholder="{{ user_id.email }}">
+					</div>
+				</div>
+				<button type="submit" class="btn btn-dark">Update</button>
+			</form>
+			<a href="/">Go Back</a> | <a href="/{{ user_id.id }}">Show</a>
+		</div>
+	</div>
+</body>
+</html>	
